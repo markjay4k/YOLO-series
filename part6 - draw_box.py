@@ -2,6 +2,7 @@ import os
 import matplotlib.pyplot as plt
 import cv2
 from matplotlib.widgets import RectangleSelector
+from generate_xml import write_xml
 
 # global constants
 img = None
@@ -18,6 +19,7 @@ obj = 'fidget_spinner'
 def line_select_callback(clk, rls):
     global tl_list
     global br_list
+    global object_list
     tl_list.append((int(clk.xdata), int(clk.ydata)))
     br_list.append((int(rls.xdata), int(rls.ydata)))
     object_list.append(obj)
@@ -29,7 +31,8 @@ def onkeypress(event):
     global br_list
     global img
     if event.key == 'q':
-        print(tl_list, br_list)
+        print(object_list)
+        write_xml(image_folder, img, object_list, tl_list, br_list, savedir)
         tl_list = []
         br_list = []
         object_list = []
