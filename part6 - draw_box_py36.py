@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import cv2
 from matplotlib.widgets import RectangleSelector
 from generate_xml import write_xml
-import sys
 
 # global constants
 img = None
