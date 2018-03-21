@@ -18,8 +18,8 @@ colors = [tuple(255 * np.random.rand(3)) for i in range(5)]
 while (capture.isOpened()):
     stime = time.time()
     ret, frame = capture.read()
-    results = tfnet.return_predict(frame)
     if ret:
+        results = tfnet.return_predict(frame)
         for color, result in zip(colors, results):
             tl = (result['topleft']['x'], result['topleft']['y'])
             br = (result['bottomright']['x'], result['bottomright']['y'])
