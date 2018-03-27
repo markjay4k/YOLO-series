@@ -20,8 +20,8 @@ capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 while True:
     stime = time.time()
     ret, frame = capture.read()
-    results = tfnet.return_predict(frame)
     if ret:
+        results = tfnet.return_predict(frame)
         for color, result in zip(colors, results):
             tl = (result['topleft']['x'], result['topleft']['y'])
             br = (result['bottomright']['x'], result['bottomright']['y'])
